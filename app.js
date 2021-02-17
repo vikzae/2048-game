@@ -1,18 +1,20 @@
 let tiles = null;
-
+let gameOn = true;
 
 document.addEventListener("DOMContentLoaded", function(event) {
     document.onkeydown = chackKey;
     tiles = document.querySelectorAll('.tile');
-
-    let firstTile = Math.floor(Math.random() * 16);
-    let secondTile = Math.floor(Math.random() * 16);
-
-    while(firstTile == secondTile) {secondTile = Math.floor(Math.random() * 16);}
-
-    tiles[firstTile].children[0].innerText = Math.round(Math.random() + 1) * 2;
-    tiles[secondTile].children[0].innerText = Math.round(Math.random() + 1) * 2;
+    start();
 });
+function start() {
+let firstTile = Math.floor(Math.random() * 16);
+let secondTile = Math.floor(Math.random() * 16);
+
+while(firstTile == secondTile) {secondTile = Math.floor(Math.random() * 16);}
+
+tiles[firstTile].children[0].innerText = Math.round(Math.random() + 1) * 2;
+tiles[secondTile].children[0].innerText = Math.round(Math.random() + 1) * 2;
+}
 
 function newNumber() {
     let emptyTiles = [];
@@ -22,7 +24,11 @@ function newNumber() {
         }
     })
     let randomIndex = Math.floor(Math.random() * emptyTiles.length);
+    if (emptyTiles.length != 0 ) {
     tiles[emptyTiles[randomIndex]].children[0].innerText = Math.round(Math.random() + 1) * 2;
+    } else {
+        GameOver()
+    }
 }
 
 function left() {
@@ -112,5 +118,22 @@ function chackKey(key) {
         down()
         newNumber()
     }
+    if(key.keyCode == 71) {
+        gameOver()
+    }
+    if(key.keyCode == 82) {
+        restart()
+    }
     
+}
+function restart() {
+    for (let i = 0 ; i < tiles.length; i++) {
+        tiles[i].children[0].innerText = '0'
+    }
+    document.getElementById('gameover').style.display = 'none';
+    start()
+}
+function gameOver() {
+     gameOn = false;
+     document.getElementById('gameover').style.display = 'block';
 }
