@@ -16,7 +16,7 @@
 }
 
 .tile > span {
-    font-size: 58px;
+    font-size: 250%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -24,4 +24,5 @@
 }
 .ScoreBoard > div {
     font-weight:  bold;
+    display: inline-block;
 }
