@@ -27,7 +27,7 @@ function newNumber() {
     if (emptyTiles.length != 0 ) {
     tiles[emptyTiles[randomIndex]].children[0].innerText = Math.round(Math.random() + 1) * 2;
     } else {
-        GameOver()
+        gameOver()
     }
 }
 
