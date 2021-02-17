@@ -53,7 +53,6 @@ function down() {
 function row(firstTile,secondTile,thirdTile, fourthTile) {
     
     let inputs = [firstTile, secondTile, thirdTile, fourthTile]
-    console.log(tiles)
     let a = Number(tiles[firstTile].children[0].innerText);
     let b = Number(tiles[secondTile].children[0].innerText);
     let c = Number(tiles[thirdTile].children[0].innerText);
